@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.marvelApp.R
 import com.example.marvelApp.databinding.FragmentMarvelListBinding
@@ -39,7 +40,10 @@ class MarvelListFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val adapter = MarvelListAdapter(ListItemListener {
-
+            view?.findNavController()
+                ?.navigate(
+                    MarvelListFragmentDirections.actionMarvelListFragmentToMarvelDetailFragment(it)
+                )
         })
 
         binding.recyclerviewlist.layoutManager =

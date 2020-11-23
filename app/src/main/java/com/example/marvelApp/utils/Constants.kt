@@ -7,5 +7,6 @@ class Constants {
         val API_PRIVATE_KEY = "6c1f4b1cb76228e0d7f576c620157c85ec5da7c0"
 
         val IMAGE_TYPE = "/standard_amazing."
+        val IMAGE_TYPE_FULL = "/portrait_incredible."
     }
 }
