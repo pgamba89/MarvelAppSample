@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.marvelApp.model.Character" />
+
+        <variable
+            name="clickListener"
+            type="com.example.marvelApp.ui.marvelList.ListItemListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(item)}"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/main_photo_image"
+            android:layout_width="191dp"
+            android:layout_height="195dp"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{item.thumbnail}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/property_type_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Character"
+            android:textColor="#de000000"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/main_photo_image"
+            app:layout_constraintTop_toTopOf="@+id/main_photo_image"
+            tools:text="@{item.name}" />
+
+        <TextView
+            android:id="@+id/price_value_text"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="Description"
+            android:textColor="#de000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/main_photo_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/main_photo_image"
+            app:layout_constraintTop_toBottomOf="@+id/property_type_text"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="@{item.description}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

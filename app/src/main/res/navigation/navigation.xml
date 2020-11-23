@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    app:startDestination="@id/marvelListFragment">
+
+    <fragment
+        android:id="@+id/marvelListFragment"
+        android:name="com.example.marvelApp.ui.marvelList.MarvelListFragment"
+        android:label="MarvelListFragment" />
+</navigation>
