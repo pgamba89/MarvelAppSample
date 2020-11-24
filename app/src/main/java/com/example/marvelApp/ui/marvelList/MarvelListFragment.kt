@@ -31,7 +31,7 @@ class MarvelListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding: FragmentMarvelListBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_marvel_list, container, false
         )

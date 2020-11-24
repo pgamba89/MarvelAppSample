@@ -1,6 +1,5 @@
 package com.example.marvelApp.data
 
-import android.util.Log
 import androidx.paging.PagingSource
 import com.example.marvelApp.api.ApiService
 import com.example.marvelApp.model.Character
