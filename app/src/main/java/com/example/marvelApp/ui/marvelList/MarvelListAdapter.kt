@@ -6,7 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelApp.databinding.FragmentMarvelItemBinding
-import com.example.marvelApp.model.Character
+import com.example.marvelApp.data.model.Character
 
 class MarvelListAdapter(private val clickListener: ListItemListener) :
     PagingDataAdapter<Character, MarvelListAdapter.ViewHolder>(ItemsDiffCallback()) {

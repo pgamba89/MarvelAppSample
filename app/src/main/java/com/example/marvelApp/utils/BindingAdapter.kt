@@ -6,7 +6,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.marvelApp.R
-import com.example.marvelApp.model.Thumbnail
+import com.example.marvelApp.data.model.Thumbnail
 import com.example.marvelApp.utils.Constants.Companion.IMAGE_TYPE
 import com.example.marvelApp.utils.Constants.Companion.IMAGE_TYPE_FULL
 

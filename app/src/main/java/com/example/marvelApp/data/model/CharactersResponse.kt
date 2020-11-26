@@ -1,4 +1,4 @@
-package com.example.marvelApp.model
+package com.example.marvelApp.data.model
 
 data class CharactersResponse(
         val code: String? = null,

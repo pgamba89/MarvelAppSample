@@ -7,26 +7,31 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.marvelApp.model.Character
+import com.example.marvelApp.data.model.Character
 import com.example.marvelApp.repository.MarvelRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
 
 class MarvelListModelView @ViewModelInject constructor(private val repository: MarvelRepository) :
     ViewModel() {
 
-    // private var currentResultLiveData: LiveData<PagingData<ModelResponse.Character>>? = null
+    var marvelCharacters: LiveData<PagingData<Character>>? = null
 
- //   private val _marvelCharacters = MutableLiveData<PagingData<Character>>()
+    private val _errorConnection = MutableLiveData<Boolean>()
 
-     private var marvelCharacters: Flow<PagingData<Character>>? = null
-   //     get() = _marvelCharacters
+    val errorConnection : LiveData<Boolean>
+        get() = _errorConnection
 
-    fun getCharacters(): Flow<PagingData<Character>> {
-        val newResultLiveData: Flow<PagingData<Character>> =
-            repository.getCharacters().cachedIn(viewModelScope)
-        marvelCharacters = newResultLiveData
-        return newResultLiveData
+    init {
+        getCharacters()
+    }
+
+    private fun getCharacters() {
+        try {
+            val newResultLiveData: LiveData<PagingData<Character>> =
+                repository.getCharacters().cachedIn(viewModelScope)
+            marvelCharacters = newResultLiveData
+            _errorConnection.value = false
+        } catch (e: Exception) {
+            _errorConnection.value = true
+        }
     }
 }

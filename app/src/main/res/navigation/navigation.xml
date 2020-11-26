@@ -17,6 +17,6 @@
         android:label="MarvelDetailFragment" >
         <argument
             android:name="characterSelected"
-            app:argType="com.example.marvelApp.model.Character" />
+            app:argType="com.example.marvelApp.data.model.Character" />
     </fragment>
 </navigation>

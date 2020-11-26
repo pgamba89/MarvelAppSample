@@ -1,4 +1,4 @@
-package com.example.marvelApp.model
+package com.example.marvelApp.data.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

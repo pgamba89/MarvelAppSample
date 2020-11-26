@@ -1,6 +1,6 @@
 package com.example.marvelApp.di
 
-import com.example.marvelApp.api.ApiService
+import com.example.marvelApp.data.source.remote.ApiService
 import com.example.marvelApp.utils.Constants
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module

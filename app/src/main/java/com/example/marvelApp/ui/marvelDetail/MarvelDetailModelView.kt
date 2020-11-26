@@ -3,7 +3,7 @@ package com.example.marvelApp.ui.marvelDetail
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
-import com.example.marvelApp.model.Character
+import com.example.marvelApp.data.model.Character
 import com.example.marvelApp.repository.MarvelRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

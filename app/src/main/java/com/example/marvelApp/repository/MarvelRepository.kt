@@ -1,33 +1,36 @@
 package com.example.marvelApp.repository
 
+import androidx.lifecycle.LiveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.marvelApp.api.ApiService
+import androidx.paging.liveData
 import com.example.marvelApp.data.CharactersDataSource
-import com.example.marvelApp.model.Character
-import com.example.marvelApp.model.CharactersResponse
+import com.example.marvelApp.data.model.Character
+import com.example.marvelApp.data.model.CharactersResponse
+import com.example.marvelApp.data.source.remote.ApiService
 import com.example.marvelApp.utils.Constants
 import com.example.marvelApp.utils.HashGenerator
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MarvelRepository @Inject constructor(private val apiService: ApiService) {
+class MarvelRepository @Inject constructor(
+    private val apiService: ApiService,
+) {
 
     companion object {
         private const val NETWORK_PAGE_SIZE = 20
     }
 
-    fun getCharacters(): Flow<PagingData<Character>> {
+    fun getCharacters(): LiveData<PagingData<Character>> {
         return Pager(
             config = PagingConfig(
-                enablePlaceholders = true,
-                pageSize = NETWORK_PAGE_SIZE
+                pageSize = NETWORK_PAGE_SIZE,
+                enablePlaceholders = false
             ),
             pagingSourceFactory = { CharactersDataSource(apiService) }
-        ).flow
+        ).liveData
     }
 
     suspend fun getCharacterById(id: String?): CharactersResponse {

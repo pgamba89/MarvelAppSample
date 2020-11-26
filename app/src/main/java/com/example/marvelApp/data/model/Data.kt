@@ -1,4 +1,4 @@
-package com.example.marvelApp.model
+package com.example.marvelApp.data.model
 
 data class Data(
         val offset: String? = null,

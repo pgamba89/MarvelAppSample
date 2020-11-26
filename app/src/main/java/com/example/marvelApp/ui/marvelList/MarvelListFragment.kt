@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -14,7 +15,6 @@ import com.example.marvelApp.R
 import com.example.marvelApp.databinding.FragmentMarvelListBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -50,30 +50,20 @@ class MarvelListFragment : Fragment() {
             LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         binding.recyclerviewlist.adapter = adapter
 
-/*        viewModel.marvelCharacters.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                adapter.submitData(viewLifecycleOwner.lifecycle, it)
-                adapter.notifyDataSetChanged()
-            }
-        })*/
-
-/*        searchJob?.cancel()
+        searchJob?.cancel()
         searchJob = lifecycleScope.launch {
-            viewModel.marvelCharacters.observe(viewLifecycleOwner, {
+            viewModel.marvelCharacters?.observe(viewLifecycleOwner, {
                 it?.let {
                     adapter.submitData(viewLifecycleOwner.lifecycle, it)
                 }
             })
-        }*/
-
-        searchJob?.cancel()
-        searchJob = lifecycleScope.launch {
-            viewModel.getCharacters()
-                .collectLatest {
-                    adapter.submitData(it)
-                    adapter.notifyDataSetChanged()
-                }
         }
+
+        viewModel.errorConnection.observe(viewLifecycleOwner, {
+            if (it) {
+                Toast.makeText(activity, R.string.NoConnection, Toast.LENGTH_LONG).show()
+            }
+        })
 
         return binding.root
     }

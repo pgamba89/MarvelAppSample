@@ -1,4 +1,4 @@
-package com.example.marvelApp.model
+package com.example.marvelApp.data.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
@@ -10,3 +10,9 @@ data class Comics(
         val collectionURI: String? = null,
         val items: List<ComicsItem>? = null
     ) : Parcelable
+
+@Parcelize
+data class ComicsItem(
+    val resourceURI: String? = null,
+    val name: String? = null
+) : Parcelable
