@@ -11,9 +11,11 @@ import com.example.marvelApp.data.model.CharactersResponse
 import com.example.marvelApp.data.source.remote.ApiService
 import com.example.marvelApp.utils.Constants
 import com.example.marvelApp.utils.HashGenerator
+import com.example.marvelApp.utils.OpenForTesting
 import javax.inject.Inject
 import javax.inject.Singleton
 
+@OpenForTesting
 @Singleton
 class MarvelRepository @Inject constructor(
     private val apiService: ApiService,
