@@ -22,8 +22,6 @@ class MarvelListFragment : Fragment() {
 
     private val viewModel: MarvelListModelView by viewModels()
 
-    private var searchJob: Job? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
