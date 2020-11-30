@@ -50,14 +50,11 @@ class MarvelListFragment : Fragment() {
             LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         binding.recyclerviewlist.adapter = adapter
 
-        searchJob?.cancel()
-        searchJob = lifecycleScope.launch {
-            viewModel.marvelCharacters?.observe(viewLifecycleOwner, {
-                it?.let {
-                    adapter.submitData(viewLifecycleOwner.lifecycle, it)
-                }
-            })
-        }
+        viewModel.marvelCharacters?.observe(viewLifecycleOwner, {
+            it?.let {
+                adapter.submitData(viewLifecycleOwner.lifecycle, it)
+            }
+        })
 
         viewModel.errorConnection.observe(viewLifecycleOwner, {
             if (it) {

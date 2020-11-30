@@ -18,8 +18,9 @@ class CharactersDataSource(private val apiService: ApiService) :
         Constants.API_PUBLIC_KEY
     )
 
+    var initialLoadSize = 0
+
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
-        var initialLoadSize = 0
         return try {
             val nextPageNumber = params.key ?: 1
 
